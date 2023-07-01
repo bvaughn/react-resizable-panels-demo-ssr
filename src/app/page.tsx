@@ -2,12 +2,7 @@ import ClientComponent from "@/app/ClientComponent";
 import { cookies } from "next/headers";
 
 export default function Home() {
-  const layout = cookies().get("react-resizable-panels:layout");
-
-  let defaultLayout;
-  if (layout) {
-    defaultLayout = JSON.parse(layout.value);
-  }
+  const defaultLayout = getDefaultLayout();
 
   return (
     <main className="h-48 p-1">
@@ -19,4 +14,12 @@ export default function Home() {
       <ClientComponent defaultLayout={defaultLayout} />
     </main>
   );
+}
+
+function getDefaultLayout() {
+  const layout = cookies().get("react-resizable-panels:layout");
+  if (layout) {
+    return JSON.parse(layout.value);
+  }
+  return [33, 67];
 }

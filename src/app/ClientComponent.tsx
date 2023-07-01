@@ -3,9 +3,9 @@
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 export default function ClientComponent({
-  defaultLayout = [33, 67],
+  defaultLayout,
 }: {
-  defaultLayout: number[] | undefined;
+  defaultLayout: number[];
 }) {
   const onLayout = (sizes: number[]) => {
     document.cookie = `react-resizable-panels:layout=${JSON.stringify(sizes)}`;
